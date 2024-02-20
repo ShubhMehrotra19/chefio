@@ -7,6 +7,7 @@ import Downloads from './components/Downloads/Downloads';
 import Contact from './components/Contact/Contact';
 import Aboutus from './components/About/Aboutus';
 import Pricing from './components/About/Pricing';
+import Error from './components/Error/Error';
 
 function App() {
   let docTitle = document.title;
@@ -25,7 +26,7 @@ function App() {
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
         <Route path="/about" element={<Layout><Aboutus /></Layout>} />
         <Route path="/pricing" element={<Layout><Pricing /></Layout>} />
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
   );
