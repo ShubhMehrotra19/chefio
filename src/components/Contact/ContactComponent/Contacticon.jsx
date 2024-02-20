@@ -10,7 +10,7 @@ function handleClick(){
     return (
         <div onClick={handleClick}>
             {active ? (
-                 <div className="flex justify-center items-center w-16 h-16 bg-indigo-500 rounded-full">
+                 <div className="flex justify-center items-center w-16 h-16 bg-indigo-500 hover:scale-105 transition rounded-full">
                  <img className='h-[35px] w-[35px] z-10' src="/images/icons8-message-50.png" alt="speech-bubble--v2"/>
                  </div>
             ) : (
