@@ -1,58 +1,42 @@
 import React, { useState } from 'react';
 import { Menu, X, ChevronRight } from 'lucide-react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const menuItems = [
   {
     name: 'Home',
     to: '/home',
-    active: true,
   },
   {
     name: 'About',
     to: '/about',
-    active: false,
   },
   {
     name: 'Recipes',
     to: '/recipes',
-    active: false,
   },
   {
     name: 'Download',
     to: '/downloads',
-    active: false,
   },
   {
     name: 'Contact',
     to: '/contact',
-    active: false,
   },
 ];
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  function handleNavItemClick(item) {
-    setActiveItem(item);
-    menuItems.forEach((menuItem) => {
-      if (menuItem.name === item.name) {
-        menuItem.active = true;
-      } else {
-        menuItem.active = false;
-      }
-    });
-  }
-
   return (
     <>
       <div className="relative w-full">
-      <div className="absolute top-0 left-[75%] bg-slate-400 opacity-25 h-[500px] w-[350px]"></div>
+        <div className="absolute top-0 left-[75%] bg-slate-400 opacity-25 h-[500px] w-[350px]"></div>
         <div className="flex mx-5 items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="w-32 h-12 text-center text-black text-xl font-bold font-['Poppins'] flex items-center justify-center">
             Chefio.
@@ -62,13 +46,13 @@ function Navbar() {
               {menuItems.map((item) => (
                 <li key={item.name}>
                   <div
-                    className={`w-24 h-7 text-center font-medium text-black text-sm font-['Poppins'] relative ${item.active ? 'bg-indigo-500 bg-opacity-50 rounded hover:bg-indigo-600 hover:text-white' : ' hover:border-b-2 border-slate-600 transition ease-out delay-150'}`}
+                    className={`w-24 h-7 text-center font-medium text-black text-sm font-['Poppins'] relative ${
+                      location.pathname === item.to
+                        ? 'bg-indigo-500 bg-opacity-50 rounded hover:bg-indigo-600 hover:text-white'
+                        : ' hover:border-b-2 border-slate-600 transition ease-in-out'
+                    }`}
                   >
-                    <NavLink
-                      to={item.to}
-                      className="w-full h-full flex items-center justify-center"
-                      onClick={() => handleNavItemClick(item)}
-                    >
+                    <NavLink to={item.to} className="w-full h-full flex items-center justify-center">
                       {item.name}
                     </NavLink>
                   </div>
@@ -124,7 +108,6 @@ function Navbar() {
                           key={item.name}
                           to={item.to}
                           className="-m-3 flex items-center rounded-md p-3 text-sm font-semibold hover:bg-gray-50"
-                          onClick={() => handleNavItemClick(item)}
                         >
                           <span className="ml-3 text-base font-medium text-gray-900">{item.name}</span>
                           <span>

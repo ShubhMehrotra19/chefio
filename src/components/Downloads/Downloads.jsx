@@ -14,7 +14,7 @@ function Downloads() {
         <a href="/" tabIndex="0"><img className="bn46" src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"alt="bn45"/></a>
         </div>
       </div>
-      <div className='mt-[17px]'>
+      <div className=' z-20 mt-[17px]'>
       <img src="/images/Download_page.png" alt="img" />
       </div>
     </div>

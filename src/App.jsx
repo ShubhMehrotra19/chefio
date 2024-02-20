@@ -5,6 +5,8 @@ import Landingpage from './components/LandingPage/Landingpage';
 import Home from './components/HomePage/Home';
 import Downloads from './components/Downloads/Downloads';
 import Contact from './components/Contact/Contact';
+import Aboutus from './components/About/Aboutus';
+import Pricing from './components/About/Pricing';
 
 function App() {
   let docTitle = document.title;
@@ -21,6 +23,8 @@ function App() {
         <Route path="/home" element={<Layout><Home /></Layout>} />
         <Route path="/downloads" element={<Layout><Downloads /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />
+        <Route path="/about" element={<Layout><Aboutus /></Layout>} />
+        <Route path="/pricing" element={<Layout><Pricing /></Layout>} />
         <Route path="*" element={<h1>Not Found</h1>} />
       </Routes>
     </BrowserRouter>
