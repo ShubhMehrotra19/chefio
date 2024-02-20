@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import LeaveReview from './LeaveReview'
+import LeaveReview from '../LeaveReview/LeaveReview'
 
 function Aboutus() {
     return (

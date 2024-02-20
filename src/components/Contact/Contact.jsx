@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '../Card/Card'
 import Contacticon from './ContactComponent/Contacticon'
+import LeaveReview from '../LeaveReview/LeaveReview'
 
 function Contact() {
     const reviews =[
@@ -34,7 +35,7 @@ function Contact() {
         <Contacticon />
         </div>
         <div className="text-black text-2xl font-normal font-['Poppins'] mb-8">Cooked with Chefio? We will love to <br /> know your experience. </div>
-        <div className="w-40 h-12 bg-indigo-500 rounded-2xl flex items-center justify-center hover:bg-indigo-600 hover:scale-105 transition"><p className="text-white font-medium font-['Poppins']">Leave a review?</p></div>
+        <LeaveReview />
         </div>
         <img className=' pl-12 mt-6 scale-90' src="/images/helping_contactPage.png" alt="plate" />
             {reviews.map((review, index) => (
