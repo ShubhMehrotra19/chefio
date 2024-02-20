@@ -17,7 +17,7 @@ function Landingpage() {
 
   return (
     <section style={sectionStyle}>
-      <img src="src\Assets\images\Cover Page.png" alt="landing" style={imageStyle} />
+      <img src="/images/Cover Page.png" alt="landing" style={imageStyle} />
       <div className="absolute top-1/2 left-[85%] transform -translate-x-2/3 -translate-y-1/2 text-start text-white">
         <h1 className="font-Poppins text-9xl font-bold leading-normal mb-[-30px]">Chefio.</h1>
         <h3 className="font-Poppins text-[24px] font-semibold leading-normal m-0 w-[500px]">The community that celebrates cooking</h3>
