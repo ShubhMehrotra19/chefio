@@ -15,7 +15,7 @@ function Downloads() {
         </div>
       </div>
       <div className='mt-[17px]'>
-      <img src="images/Download_page.png" alt="img" />
+      <img src="src\Assets\images\Download_page.png" alt="img" />
       </div>
     </div>
   );

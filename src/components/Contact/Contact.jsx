@@ -36,7 +36,7 @@ function Contact() {
         <div className="text-black text-2xl font-normal font-['Poppins'] mb-8">Cooked with Chefio? We will love to <br /> know your experience. </div>
         <div className="p-4 w-fit bg-indigo-500 rounded-2xl flex items-center justify-center"><p className="text-white text-xl font-medium font-['Poppins']">Leave a review?</p></div>
         </div>
-        <img className=' pl-12 mt-6 scale-90' src="images/helping_contactPage.png" alt="plate" />
+        <img className=' pl-12 mt-6 scale-90' src="src\Assets\images\helping_contactPage.png" alt="plate" />
             {reviews.map((review, index) => (
           <Card key={index} {...review} />
         ))}

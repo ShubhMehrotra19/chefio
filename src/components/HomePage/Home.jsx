@@ -26,7 +26,7 @@ function Home() {
         <div className="text-black text-xl font-semibold font-['Poppins'] capitalize">Have your ingredients but don’t know what to make?</div>
         <div className="text-black text-xl font-semibold font-['Poppins'] capitalize">No need to worry again!</div>
         </div>
-        <img className='-mr-24 pl-12' src="images/homepage_plate.png" alt="plate" />
+        <img className='-mr-24 pl-12' src="src\Assets\images\homepage_plate.png" alt="plate" />
             {reviews.map((review, index) => (
           <Card key={index} {...review} />
         ))}
