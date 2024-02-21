@@ -1,5 +1,6 @@
-import React from 'react';
+import { React, useState } from 'react';
 import Card from '../Card/Card';
+import RecipeIngredients from './RecipeIngredients';
 
 function Recipies() {
   const cardData = [
@@ -11,6 +12,34 @@ function Recipies() {
       position: { top: '30%', left: '28%' },
     },
   ];
+
+  const images = [
+    { src: '/images/food/image5.png', alt: 'image5' },
+    { src: '/images/food/image4.png', alt: 'image4' },
+    { src: '/images/food/image1.png', alt: 'image1' },
+    { src: '/images/food/image2.png', alt: 'image2' },
+    { src: '/images/food/image3.png', alt: 'image3' },
+  ];
+
+const [selectedImage, setSelectedImage] = useState(images[0]);
+
+
+function rearrangeArray(selectedImage) {
+    const selectedIndex = images.findIndex(image => image.src === selectedImage.src);
+  
+    if (selectedIndex !== -1) {
+      const frontPart = images.slice(selectedIndex + 1);
+      const rearPart = images.slice(0, selectedIndex);
+      const rearrangedArray = frontPart.concat(selectedImage, rearPart);
+  
+      // Update the state with the rearranged array
+      setSelectedImage(rearrangedArray[1]); // Provide the image from the index 1 of the rearranged array
+    } else {
+      console.log("Selected image not found in the array.");
+    }
+  }
+  
+    
 
   return (
     <div className='flex flex-col overflow-hidden'>
@@ -34,33 +63,18 @@ function Recipies() {
           
           <div className='z-20 -ml-20 mt-16'>
           <div className="w-60 max-h-80 h-fit p-5 bg-white flex flex-col justify-start shadow-xl">
-            <div className=" text-black text-xl font-semibold font-['Poppins'] mb-5">Ingredients</div>
-            <div className='flex justify-start items-center py-2 gap-1'>
-            <img src="/images/icons/tomato.png" alt="tomato" />
-            <div className="text-black text-base font-normal font-['Poppins']">cherry tomato x3</div>
-            </div>
-            <div className='flex justify-start items-center py-2 gap-1'>
-            <img src="/images/icons/basil.png" alt="tomato" />
-            <div className="text-black text-base font-normal font-['Poppins']">basil leaves x4</div>
-            </div>
-            <div className='flex justify-start items-center py-2 gap-1'>
-            <img src="/images/icons/salt.png" alt="tomato" />
-            <div className="text-black text-base font-normal font-['Poppins']">salt to taste</div>
-            </div>
-            <div className='flex justify-start items-center py-2 gap-1'>
-            <img src="/images/icons/cheese.png" alt="tomato" />
-            <div className="text-black text-base font-normal font-['Poppins']">parmesan cheese</div>
-            </div>
-            </div>
+          <div className="text-black text-xl font-semibold font-['Poppins'] mb-5">Ingredients</div>
+            <RecipeIngredients />
+          </div>
           </div>
 
       </div>
       <div className='flex justify-between items-end relative -mt-6'>
-        <div className='h-48 w-56 bg-indigo-300 bg-opacity-80 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-75 hover:blur-none transition ease-in delay-150 hover:scale-90 hover:rotate-6'><img src="/images/food/image5.png" alt="" /></div></div>
-        <div className='h-56 w-64 bg-indigo-400 bg-opacity-70 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-90 hover:blur-none transition ease-in delay-150 hover:scale-95 hover:rotate-6'><img src="/images/food/image4.png" alt="" /></div></div>
-        <div className='h-60 w-72 bg-indigo-500 bg-opacity-70 rounded-md' style={{boxShadow: '0 0 15px rgba(0, 0, 255, 0.5)'}}><div className='h-full w-full flex justify-center items-center scale-95 hover:scale-100 transition ease-in delay-150 hover:rotate-6'><img src="/images/food/image1.png" alt="" /></div></div>
-        <div className='h-56 w-64 bg-indigo-400 bg-opacity-70 rounded-md'><div className='blur-[2px] h-full w-full flex justify-center items-center scale-90 hover:blur-none transition ease-in delay-150 hover:scale-95 hover:rotate-6'><img src="/images/food/image2.png" alt="" /></div></div>
-        <div className='h-48 w-56 bg-indigo-300 bg-opacity-80 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-75 hover:blur-none transition ease-in delay-150 hover:scale-90 hover:rotate-6'><img src="/images/food/image3.png" alt="" /></div></div>
+        <div onClick={() => rearrangeArray(images[0])} className='h-48 w-56 bg-indigo-300 bg-opacity-80 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-75 hover:blur-none transition ease-in delay-150 hover:scale-90 hover:rotate-6'><img src={images[0].src} alt={images[0].alt} /></div></div>
+        <div onClick={() => rearrangeArray(images[1])} className='h-56 w-64 bg-indigo-400 bg-opacity-70 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-90 hover:blur-none transition ease-in delay-150 hover:scale-95 hover:rotate-6'><img src={images[1].src} alt={images[1].alt} /></div></div>
+        <div onClick={() => rearrangeArray(images[2])} className='h-60 w-72 bg-indigo-500 bg-opacity-70 rounded-md' style={{ boxShadow: '0 0 15px rgba(0, 0, 255, 0.5)' }}><div className='h-full w-full flex justify-center items-center scale-95 hover:scale-100 transition ease-in delay-150 hover:rotate-6'><img src={images[2].src} alt={images[2].alt} /></div></div>
+        <div onClick={() => rearrangeArray(images[3])} className='h-56 w-64 bg-indigo-400 bg-opacity-70 rounded-md'><div className='blur-[2px] h-full w-full flex justify-center items-center scale-90 hover:blur-none transition ease-in delay-150 hover:scale-95 hover:rotate-6'><img src={images[3].src} alt={images[3].alt} /></div></div>
+        <div onClick={() => rearrangeArray(images[4])} className='h-48 w-56 bg-indigo-300 bg-opacity-80 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-75 hover:blur-none transition ease-in delay-150 hover:scale-90 hover:rotate-6'><img src={images[4].src} alt={images[4].alt} /></div></div>
       </div>
     </div>
   );
