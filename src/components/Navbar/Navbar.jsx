@@ -36,7 +36,7 @@ function Navbar() {
   return (
     <>
       <div className="relative w-full">
-        <div className="absolute top-0 left-[75%] bg-slate-400 opacity-25 h-[500px] w-[350px]"></div>
+        <div className="absolute top-0 left-[82%] bg-slate-400 opacity-25 h-[350px] w-[200px]"></div>
         <div className="flex mx-5 items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
           <div className="w-32 h-12 text-center text-black text-xl font-bold font-['Poppins'] flex items-center justify-center">
             Chefio.
@@ -63,7 +63,7 @@ function Navbar() {
           <div className="flex justify-center items-center">
             <div className="flex grow z-20">
               <input
-                className="flex h-10 w-[250px] rounded-md bg-gray-100 px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex h-10 border border-slate-400 w-[250px] rounded-md bg-gray-100 px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                 type="text"
                 placeholder="Search"
               ></input>
