@@ -10,6 +10,7 @@ import Pricing from './components/About/Pricing';
 import Error from './components/Error/Error';
 import Recipies from './components/Recipies/Recipies';
 import Description from './components/Recipies/RecipieDescription/Description';
+import Chefio from './components/Chefio/Chefio';
 
 function App() {
   let docTitle = document.title;
@@ -22,7 +23,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Landingpage />} />
+        <Route path="/" element={<Layout><Chefio /></Layout>} />
+        <Route path="/signin" element={<Landingpage />} />
         <Route path="/home" element={<Layout><Home /></Layout>} />
         <Route path="/downloads" element={<Layout><Downloads /></Layout>} />
         <Route path="/contact" element={<Layout><Contact /></Layout>} />

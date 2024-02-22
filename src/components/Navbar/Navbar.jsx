@@ -38,9 +38,13 @@ function Navbar() {
       <div className="relative w-full">
         <div className="absolute top-0 left-[82%] bg-slate-400 opacity-25 h-[350px] w-[200px]"></div>
         <div className="flex mx-5 items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <div className="w-32 h-12 text-center text-black text-xl font-bold font-['Poppins'] flex items-center justify-center">
+         <NavLink to="/"><div className={`w-32 h-12 text-center text-black text-xl font-bold font-['Poppins'] flex items-center justify-center ${
+                      location.pathname === '/'
+                        ? 'bg-indigo-500 bg-opacity-50 rounded hover:bg-indigo-600 hover:text-white'
+                        : ' hover:border-b-2 border-slate-600 transition ease-in-out'
+                    }`}>
             Chefio.
-          </div>
+          </div></NavLink>
           <div className="hidden lg:block">
             <ul className="ml-12 inline-flex space-x-8">
               {menuItems.map((item) => (

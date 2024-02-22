@@ -127,15 +127,16 @@ function Description() {
   ];
 
   const procedureSteps = value !== undefined ? procedure[value] : [];
+  const IngredientsList = value !== undefined ? Ingredients[value] : [];
 
   return (
     <div className='flex'>
     <div className='mt-6 ml-20 flex flex-col justify-start gap-4'>
         <div className="text-black text-6xl font-bold font-serif capitalize mb-3">Recipes</div>
-        <div className="ml-20 h-fit max-w-[500px] py-4 px-4 relative bg-zinc-300 bg-opacity-40 shadow-xl z-20">
-          <div className="text-center text-slate-800 text-2xl font-semibold font-['Poppins']">{title[value]}</div>
+        <div className=" cursor-pointer ml-20 h-fit max-w-[500px] py-4 px-4 relative transition 300 ease-in-out text-slate-800 text-2xl hover:text-white bg-zinc-300 hover:bg-indigo-600 bg-opacity-40 shadow-xl z-20">
+          <div className="text-center font-semibold font-['Poppins']">{title[value]}</div>
         </div>
-        <div className="ml-20 w-80 h-fit text-black text-xl font-normal font-['Poppins']">{desc[value]}</div>
+        <div className="ml-20 w-80 h-fit text-black text-xl font-semibold font-['Poppins']">{desc[value]}</div>
         <div className="rounded-sm px-4 ml-8 max-w-[800px] w-fit min-w-96 h-[330px] bg-white shadow">
         <div className="pt-2 mb-6 text-black text-2xl font-semibold font-['Poppins']">Procedure:</div>
         <div className="text-black text-lg font-medium font-['Poppins'] h-[250px]" style={{ maxHeight: '100%', overflow: 'auto', scrollbarWidth: 'thin', scrollbarColor: '#4F46E5 lightgrey' }}>
@@ -146,12 +147,12 @@ function Description() {
         </div>
       </div>
       <div className='scale-[80%] -ml-[350px] -mt-12 z-[11]'>
-            <img className=' hover:scale-105 ease-in-out' src={images[value]} alt="img" />
+            <img className=' hover:scale-105 transition delay-100 ease-in-out' src={images[value]} alt="img" />
           </div>
           <div className="p-2 z-10 rounded-sm mt-20 w-[350px] -ml-20 max-h-[500px] bg-white shadow">
           <div className=" pl-3 pt-3 mb-3 text-black text-2xl font-semibold font-['Poppins']">Ingredients:</div>
           <div className="text-black text-lg font-medium font-['Poppins']">
-          {Ingredients[value].map((item, index) => (
+          {IngredientsList.map((item, index) => (
              <p className='mb-[6px] pl-2' key={index}>👉🏽 {item}</p>
               ))}
           </div>
