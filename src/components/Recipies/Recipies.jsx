@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
-import RecipeIngredients from './RecipeIngredients';
 import ImageCarousel from './ImageCarousel';
 
 function Recipies() {
@@ -47,6 +46,41 @@ function Recipies() {
       },
   ];
 
+  const ingredientsData = [
+    [
+        { iconSrc: '/images/icons/beetroot.png', label: 'Beetroot x1 roasted+diced' },
+        { iconSrc: '/images/icons/spinach.png', label: 'chopped spinach x2 cups' },
+        { iconSrc: '/images/icons/salt.png', label: 'salt (to taste)' },
+        { iconSrc: '/images/icons/leeks.png', label: 'leeks, white parts' },
+        { iconSrc: '/images/icons/pine_nuts.png', label: 'pine nuts x1/4 cups' },
+      ],
+      [
+        { iconSrc: '/images/icons/salmon.png', label: 'salmon fillets x4' },
+        { iconSrc: '/images/icons/asparagus.png', label: 'asparagus, tough ends removed' },
+        { iconSrc: '/images/icons/salt.png', label: 'salt (to taste)' },
+        { iconSrc: '/images/icons/lemon.png', label: 'lemon sliced' },
+      ],
+       [
+        { iconSrc: '/images/icons/tomato.png', label: 'cherry tomato x3' },
+        { iconSrc: '/images/icons/basil.png', label: 'basil leaves x4' },
+        { iconSrc: '/images/icons/salt.png', label: 'salt to taste' },
+        { iconSrc: '/images/icons/cheese.png', label: 'parmesan cheese' },
+       ],
+      [
+        { iconSrc: '/images/icons/beetroot.png', label: 'Beetroot x1 roasted+diced' },
+        { iconSrc: '/images/icons/spinach.png', label: 'chopped spinach x2 cups' },
+        { iconSrc: '/images/icons/salt.png', label: 'salt (to taste)' },
+        { iconSrc: '/images/icons/quiona.png', label: 'Quinoa x1 cup' },
+       ],
+       [
+        { iconSrc: '/images/icons/black_beans.png', label: 'black beans x1 pound' },
+        { iconSrc: '/images/icons/pork_shoulder.png', label: 'pork shoulder, in cubes' },
+        { iconSrc: '/images/icons/salt.png', label: 'salt (to taste)' },
+        { iconSrc: '/images/icons/large_onion.png', label: 'large onion, chopped' },
+        { iconSrc: '/images/icons/bay_leaves.png', label: 'bay leaves x2' },
+      ]
+  ];
+
   const images = ['/images/food/image4.png', '/images/food/image5.png', '/images/food/image1.png', '/images/food/image2.png', '/images/food/image3.png'];
   const title =['Grilled Halibut with Spinach', 'grilled salmon and herbs', 'Basil-Tomato Penne pasta', 'Quinoa salad with beetroot', 'Brazilian food dish Feijoada'];
   
@@ -60,6 +94,8 @@ function Recipies() {
   //I used this to make the code a little cleaner.
   let value =  (selectedImageIndex) > 0 ? (selectedImageIndex) % 5 : (selectedImageIndex) < 0 ? (images.length + (selectedImageIndex)) % 5 : (selectedImageIndex);
   const selectedCard = cardData.find(card => card.key === value);
+
+  const selectedSubarray = ingredientsData[value] || [];
 
   return (
     <div className='flex flex-col overflow-hidden'>
@@ -84,7 +120,12 @@ function Recipies() {
           <div className='z-20 -ml-20 mt-16'>
           <div className="w-60 max-h-80 h-fit p-5 bg-white flex flex-col justify-start shadow-xl">
           <div className="text-black text-xl font-semibold font-['Poppins'] mb-5">Ingredients</div>
-            <RecipeIngredients />
+          {selectedSubarray.map((item, index) => (
+        <div key={index} className='flex justify-start items-center py-2 gap-1'>
+          <img src={item.iconSrc} alt={item.label} />
+          <div className="text-black text-base font-normal font-['Poppins']">{item.label}</div>
+        </div>
+         ))}
           </div>
           </div>
 
