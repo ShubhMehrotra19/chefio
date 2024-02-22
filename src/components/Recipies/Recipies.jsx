@@ -15,14 +15,17 @@ function Recipies() {
   ];
 
   const images = ['/images/food/image4.png', '/images/food/image5.png', '/images/food/image1.png', '/images/food/image2.png', '/images/food/image3.png'];
-
-  // Lift the state up to the parent component
+  const title =['Grilled Halibut with Spinach', 'grilled salmon and herbs', 'Basil-Tomato Penne pasta', 'Quinoa salad with beetroot', 'Brazilian food dish Feijoada'];
+  
   const [selectedImageIndex, setSelectedImageIndex] = useState(2);
 
-  // Function to handle value change
+  
   const handleValueChange = (value) => {
     setSelectedImageIndex(value);
   };
+
+  //I used this to make the code a little cleaner.
+  let value =  (selectedImageIndex) > 0 ? (selectedImageIndex) % 5 : (selectedImageIndex) < 0 ? (images.length + (selectedImageIndex)) % 5 : (selectedImageIndex);
 
   return (
     <div className='flex flex-col overflow-hidden'>
@@ -34,8 +37,8 @@ function Recipies() {
           </div>
           <div className="bg-indigo-500 hover:bg-indigo-600 hover:scale-105 cursor-pointer transition 150 ease-in-out rounded-md py-2 px-4 w-fit h-fit text-center text-white text-md font-medium font-['Poppins']">Let’s Go!</div>
         </div>
-        <div className="mt-12 ml-12 h-fit w-fit py-5 px-3 relative bg-zinc-300 bg-opacity-40 shadow-xl z-10">
-          <div className="text-center text-slate-800 text-2xl font-semibold font-['Poppins']">Basil-Tomato Penne pasta</div>
+        <div className="mt-12 ml-12 h-fit max-w-96 py-5 px-3 relative bg-zinc-300 bg-opacity-40 shadow-xl z-10">
+          <div className=" text-left text-slate-800 text-2xl font-semibold font-['Poppins']">{title[value]}</div>
         </div>
           <div className=' z-10'>
           {cardData.map((card, index) => (
@@ -43,7 +46,7 @@ function Recipies() {
           ))}
           </div>
           <div className='scale-[65%] -ml-40 -mt-10'>
-            <img src={images[ (selectedImageIndex) > 0 ? (selectedImageIndex) % 5 : (selectedImageIndex) < 0 ? (images.length + (selectedImageIndex)) % 5 : (selectedImageIndex)]} alt="img" />
+            <img src={images[value]} alt="img" />
           </div>
           
           <div className='z-20 -ml-20 mt-16'>
