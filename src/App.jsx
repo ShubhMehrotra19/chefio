@@ -9,12 +9,13 @@ import Aboutus from './components/About/Aboutus';
 import Pricing from './components/About/Pricing';
 import Error from './components/Error/Error';
 import Recipies from './components/Recipies/Recipies';
+import Description from './components/Recipies/RecipieDescription/Description';
 
 function App() {
   let docTitle = document.title;
   window.addEventListener("blur", () => {
     document.title = "Let's Cook Something 👩🏽‍🍳!!";
-  })
+  });
   window.addEventListener("focus", () => {
     document.title = docTitle;
   });
@@ -28,6 +29,7 @@ function App() {
         <Route path="/about" element={<Layout><Aboutus /></Layout>} />
         <Route path="/pricing" element={<Layout><Pricing /></Layout>} />
         <Route path="/recipes" element={<Layout><Recipies /></Layout>} />
+        <Route path="/recipes/:id" element={<Layout><Description /></Layout>} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

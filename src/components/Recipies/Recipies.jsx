@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
 import ImageCarousel from './ImageCarousel';
+import { NavLink, useNavigate } from 'react-router-dom';
+import Description from './RecipieDescription/Description';
 
 function Recipies() {
   const cardData = [
@@ -97,6 +99,12 @@ function Recipies() {
 
   const selectedSubarray = ingredientsData[value] || [];
 
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    // Use React Router to navigate to the Description page with the 'value' parameter
+    navigate(`/recipes/${title[value].toLowerCase().replace(/\s+/g, '-')}`, { state: { value } });
+  };
   return (
     <div className='flex flex-col overflow-hidden'>
       <div className='flex'>
@@ -105,8 +113,14 @@ function Recipies() {
           <div className="text-black text-xl font-medium font-['Poppins'] mb-4">
             Want to try making this dish on <br /> your own? What are you <br /> waiting for then?
           </div>
-          <div className="bg-indigo-500 hover:bg-indigo-600 hover:scale-105 cursor-pointer transition 150 ease-in-out rounded-md py-2 px-4 w-fit h-fit text-center text-white text-md font-medium font-['Poppins']">Let’s Go!</div>
-        </div>
+
+         <div
+        className="bg-indigo-500 hover:bg-indigo-600 hover:scale-105 cursor-pointer transition 150 ease-in-out rounded-md py-2 px-4 w-fit h-fit text-center text-white text-md font-medium font-['Poppins']"
+        onClick={handleNavigation}
+      >Let’s Go!</div>
+
+
+          </div>
         <div className="mt-12 ml-12 h-fit max-w-96 py-5 px-3 relative bg-zinc-300 bg-opacity-40 shadow-xl z-10">
           <div className=" text-left text-slate-800 text-2xl font-semibold font-['Poppins']">{title[value]}</div>
         </div>
@@ -133,6 +147,7 @@ function Recipies() {
       <div className='flex justify-between items-end relative -mt-6'>
       <ImageCarousel onValueChange={handleValueChange} selectedImageIndex={selectedImageIndex} />
       </div>
+      <div className='hidden'><Description value={value} /></div>
     </div>
   );
 }
