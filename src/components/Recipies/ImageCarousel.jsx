@@ -1,20 +1,21 @@
-import React from 'react'
-import { useState } from 'react';
+import React, { useState } from 'react';
 
-function ImageCarousel() {
-    
-    const images = ['/images/food/image4.png', '/images/food/image5.png', '/images/food/image1.png', '/images/food/image2.png', '/images/food/image3.png'];
+function ImageCarousel({ onValueChange }) {
+  const images = ['/images/food/image4.png', '/images/food/image5.png', '/images/food/image1.png', '/images/food/image2.png', '/images/food/image3.png'];
 
-    // Use state to track the current index
+  // Use state to track the current index
   const [num, setNum] = useState(2);
 
   // Function to handle image click
   const handleClick = (num1) => {
     setTimeout(() => {
-    setNum(num1);
-    console.log(num1);
+      setNum(num1);
+      // Call the onValueChange function to send the updated value to the parent
+      onValueChange(num1);
     }, 150);
   };
+
+
     return (
         <>
         <div onClick={() => handleClick(num - 2)} className='h-48 w-56 bg-indigo-300 bg-opacity-80 rounded-md'><div className='blur-sm h-full w-full flex justify-center items-center scale-75 hover:blur-none transition ease-in delay-150 hover:scale-90 hover:rotate-6'>

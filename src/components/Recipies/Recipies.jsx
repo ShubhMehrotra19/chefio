@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import Card from '../Card/Card';
 import RecipeIngredients from './RecipeIngredients';
 import ImageCarousel from './ImageCarousel';
@@ -16,6 +16,13 @@ function Recipies() {
 
   const images = ['/images/food/image4.png', '/images/food/image5.png', '/images/food/image1.png', '/images/food/image2.png', '/images/food/image3.png'];
 
+  // Lift the state up to the parent component
+  const [selectedImageIndex, setSelectedImageIndex] = useState(2);
+
+  // Function to handle value change
+  const handleValueChange = (value) => {
+    setSelectedImageIndex(value);
+  };
 
   return (
     <div className='flex flex-col overflow-hidden'>
@@ -35,7 +42,9 @@ function Recipies() {
             <Card key={index} {...card} />
           ))}
           </div>
-          <div className='scale-[65%] -ml-40 -mt-10'><img src="/images/food/image1.png" alt="img" /></div>
+          <div className='scale-[65%] -ml-40 -mt-10'>
+            <img src={images[ (selectedImageIndex) > 0 ? (selectedImageIndex) % 5 : (selectedImageIndex) < 0 ? (images.length + (selectedImageIndex)) % 5 : (selectedImageIndex)]} alt="img" />
+          </div>
           
           <div className='z-20 -ml-20 mt-16'>
           <div className="w-60 max-h-80 h-fit p-5 bg-white flex flex-col justify-start shadow-xl">
@@ -46,7 +55,7 @@ function Recipies() {
 
       </div>
       <div className='flex justify-between items-end relative -mt-6'>
-        <ImageCarousel />
+      <ImageCarousel onValueChange={handleValueChange} selectedImageIndex={selectedImageIndex} />
       </div>
     </div>
   );
